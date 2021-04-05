@@ -1,39 +1,31 @@
-const fs = require('fs');
-const generatePage = require('./src/page-template');
-
-const profileDataArgs = process.argv.slice(2, process.argv.length);
-
-const [name, github] = profileDataArgs;
-
-fs.writeFile('index.html', generatePage(name, github), err => {
-  if (err) throw new Error(err);
-
-  console.log('Portfolio complete! Check out index.html to see the output')
-});
+const inquirer = require('inquirer');
+// const fs = require('fs');
+// const generatePage = require('./src/page-template');
 
 
+// const pageHTML = generatePage(name, github);
 
-// console.log(profileDataArgs);
+// fs.writeFile('./index.html', pageHTML, err => {
+//   if (err) throw new Error(err);
 
-// const printProfileData = profileDataArr => {
-  // This...
-  // for (let i=0; i< profileDataArr.length; i++) {
-  //   console.log(profileDataArr[i])
-  // }
+//   console.log('Portfolio complete! Check out index.html to see the output')
+// });
 
-  // console.log('===============');
 
-  // Is the same as this...
-  // profileDataArr.forEach((profileItem) => {
-  //   console.log(profileItem)
-  // });
+// console.log(inquirer);
 
-//   profileDataArr.forEach(profileItem => console.log(profileItem));
 
-// };
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers));
 
-// printProfileData(profileDataArgs);
 
-// const generatePage = () => 'Name: Jane, Github: janehub';
 
-// const generatePage = (userName, githubName) => `Name: ${userName}, Github: ${githubName}`;
+// const profileDataArgs = process.argv.slice(2, process.argv.length);
+// const [name, github] = profileDataArgs;
